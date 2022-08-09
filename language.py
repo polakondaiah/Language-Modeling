@@ -51,7 +51,13 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def buildVocabulary(corpus):
-    return
+    all_words_list = [ word for line in corpus for word in line]
+    unique_words_list = []
+    for word in all_words_list:
+            if word not in unique_words_list:
+                unique_words_list.append(word)
+                
+    return unique_words_list
 
 
 '''
