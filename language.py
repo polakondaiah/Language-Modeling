@@ -99,6 +99,7 @@ Returns: dict mapping strs to ints
 def countStartWords(corpus):
     start_words= [line[0] for line in corpus]
     dict_start_word_count = {word:start_words.count(word)for word in start_words}
+    
     return dict_start_word_count
 
 
