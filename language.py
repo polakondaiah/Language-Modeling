@@ -5,6 +5,7 @@ Roll No:
 """
 
 import language_tests as test
+import pandas as pd
 
 project = "Language" # don't edit this
 
@@ -17,7 +18,16 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
+    with open(filename, "r") as f:
+        outer_list = []
+        for line in f:
+            if len(line.split())!=0:
+                inner_list = []
+                for word in line.split():
+                    inner_list.append(word)
+                outer_list.append(inner_list)
+            
+    return outer_list
 
 
 '''
@@ -27,7 +37,11 @@ Parameters: 2D list of strs
 Returns: int
 '''
 def getCorpusLength(corpus):
-    return
+    inner_list_length = 0
+    for i in corpus:
+        inner_list_length += len(i)
+    
+    return inner_list_length
 
 
 '''
@@ -37,7 +51,13 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def buildVocabulary(corpus):
-    return
+    all_words_list = [ word for line in corpus for word in line]
+    unique_words_list = []
+    for word in all_words_list:
+            if word not in unique_words_list:
+                unique_words_list.append(word)
+                
+    return unique_words_list
 
 
 '''
@@ -47,7 +67,10 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
-    return
+    all_list_words = [word for line in corpus for word in line]
+    dict_word_count = {word : all_list_words.count(word) for word in all_list_words}
+    
+    return dict_word_count
 
 
 '''
@@ -289,6 +312,7 @@ if __name__ == "__main__":
     test.week1Tests()
     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     test.runWeek1()
+    #test.testLoadBook()
 
     ## Uncomment these for Week 2 ##
 """
