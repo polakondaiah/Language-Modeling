@@ -80,7 +80,14 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def getStartWords(corpus):
-    return
+   # print(corpus)
+    start_words = [line[0] for line in corpus]
+    unique_start_words = []
+    for word in start_words:
+        if word not in unique_start_words:
+            unique_start_words.append(word)
+   # print(unique_start_words)
+    return sorted(unique_start_words)
 
 
 '''
@@ -90,7 +97,9 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countStartWords(corpus):
-    return
+    start_words= [line[0] for line in corpus]
+    dict_start_word_count = {word:start_words.count(word)for word in start_words}
+    return dict_start_word_count
 
 
 '''
