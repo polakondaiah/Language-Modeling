@@ -5,6 +5,7 @@ Roll No:
 """
 
 import language_tests as test
+import pandas as pd
 
 project = "Language" # don't edit this
 
@@ -17,7 +18,16 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
+    with open(filename, "r") as f:
+        outer_list = []
+        for line in f:
+            if len(line.split())!=0:
+                inner_list = []
+                for word in line.split():
+                    inner_list.append(word)
+                outer_list.append(inner_list)
+            
+    return outer_list
 
 
 '''
@@ -289,6 +299,7 @@ if __name__ == "__main__":
     test.week1Tests()
     print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     test.runWeek1()
+    #test.testLoadBook()
 
     ## Uncomment these for Week 2 ##
 """
