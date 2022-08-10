@@ -110,7 +110,19 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to (dicts mapping strs to ints)
 '''
 def countBigrams(corpus):
-    return
+    main_dict = {}
+    for line in corpus:        
+        for index in range(len(line)):            
+            for index2 in range(index+1,len(line)):                
+                if line[index] not in main_dict:
+                    main_dict[line[index]] = {}                    
+                if index2-index==1:
+                    if line[index2] not in main_dict[line[index]]:                        
+                        main_dict[line[index]] [line[index2]] = 1
+                    
+                    else:
+                        main_dict[line[index]][line[index2]] += 1
+    return main_dict
 
 
 ### WEEK 2 ###
@@ -325,12 +337,12 @@ if __name__ == "__main__":
     #test.testLoadBook()
 
     ## Uncomment these for Week 2 ##
-"""
+
     print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
     test.week2Tests()
     print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
     test.runWeek2()
-"""
+
 
     ## Uncomment these for Week 3 ##
 """
