@@ -4,6 +4,7 @@ Name:
 Roll No:
 """
 
+from audioop import reverse
 import language_tests as test
 import pandas as pd
 
@@ -171,11 +172,17 @@ def buildBigramProbs(unigramCounts, bigramCounts):
 '''
 getTopWords(count, words, probs, ignoreList)
 #4 [Check6-2]
-Parameters: int ; list of strs ; list of floats ; list of strs
+Parameters: int ; list of strs ; list of float  s ; list of strs
 Returns: dict mapping strs to floats
 '''
 def getTopWords(count, words, probs, ignoreList):
-    return
+    
+    word_prob_dict = {words[index]:probs[index] for index in range(len(probs)) 
+                      if words[index] not in ignoreList }   
+    sort_word_prob_dict = dict((sorted(word_prob_dict.items(), key = lambda x : x[1], 
+                                       reverse = True)) [:count])       
+    
+    return sort_word_prob_dict
 
 
 '''
