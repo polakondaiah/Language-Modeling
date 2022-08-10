@@ -156,8 +156,17 @@ Parameters: dict mapping strs to ints ; dict mapping strs to (dicts mapping strs
 Returns: dict mapping strs to (dicts mapping strs to (lists of values))
 '''
 def buildBigramProbs(unigramCounts, bigramCounts):
-    return
-
+    bigram_prob ={}
+    for key,value in bigramCounts.items():
+        # print(value)
+        words_l= []
+        prob_l = []
+        for key1,value1 in value.items():
+            words_l.append(key1)
+            prob_l.append(value1/unigramCounts[key])
+        temp_dict = {"words":words_l,"probs":prob_l}
+        bigram_prob[key] = temp_dict
+    return bigram_prob
 
 '''
 getTopWords(count, words, probs, ignoreList)
