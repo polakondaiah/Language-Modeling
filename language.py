@@ -211,10 +211,10 @@ Returns: str
 '''
 def generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs): 
     sentence =""
-    words_list=[]    #["dear", "sir"]
+    words_list=[]   
     for i in range (count):
         if len(words_list)==0 or words_list[-1]==".":            
-            randam_first_word_list=choices(startWords,startWordProbs) #["dear"]
+            randam_first_word_list=choices(startWords,startWordProbs) 
             words_list += randam_first_word_list
         else:
             last_word=words_list[-1]            
@@ -237,6 +237,10 @@ Parameters: 2D list of strs
 Returns: None
 '''
 def graphTop50Words(corpus):
+    unique_words = buildVocabulary(corpus)
+    unigram_probs = buildUnigramProbs(unique_words,countUnigrams(corpus),getCorpusLength(corpus))
+    top_50_words_probs = getTopWords(50,unique_words,unigram_probs,ignore)
+    barPlot(top_50_words_probs,"Top to words")
     return
 
 
@@ -365,23 +369,23 @@ def scatterPlot(xs, ys, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    '''
-    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    test.week1Tests()
-    print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek1()
+    
+
+    # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    # test.week1Tests() 
+    # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")  
+    # test.runWeek1()
     #test.testLoadBook()
-'''
+  
     ## Uncomment these for Week 2 ##
 
-    print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
-    test.week2Tests()
-    print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek2()
+    # print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
+    # test.week2Tests()
+    # print("\n" + "#"*15 + " WEEK 2 OUTPUT " + "#" * 15 + "\n")
+    # test.runWeek2()
 
 
     ## Uncomment these for Week 3 ##
-"""
+
     print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
     test.runWeek3()
-"""
