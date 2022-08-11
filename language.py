@@ -194,9 +194,12 @@ Returns: str
 '''
 from random import choices
 def generateTextFromUnigrams(count, words, probs):    
-    choice_word_list = [(random.choice(words)) for i in range(count)]
-    sentence = " ".join(choice_word_list)    
+    choices_word_list = [(random.choices(words, weights= probs)) for i in range(count)]
+    # print(choices_word_list)
+    sentence = " ".join( word for word_l in choices_word_list for word in word_l)
+    # print(sentence)    
     return sentence
+
 
 
 '''
@@ -206,8 +209,18 @@ Parameters: int ; list of strs ; list of floats ; dict mapping strs to (dicts ma
 Returns: str
 
 '''
-def generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs):
-    return
+def generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs): 
+    sentence =""
+    words_list=[]    #["dear", "sir"]
+    for i in range (count):
+        if len(words_list)==0 or words_list[-1]==".":            
+            randam_first_word_list=choices(startWords,startWordProbs) #["dear"]
+            words_list += randam_first_word_list
+        else:
+            last_word=words_list[-1]            
+            words_list += choices(bigramProbs[last_word]["words"],bigramProbs[last_word]["probs"])      
+        sentence=" ".join( word for word in words_list)  
+    return sentence
 
 
 ### WEEK 3 ###
