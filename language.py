@@ -194,8 +194,10 @@ Returns: str
 '''
 from random import choices
 def generateTextFromUnigrams(count, words, probs):    
-    choice_word_list = [(random.choice(words)) for i in range(count)]
-    sentence = " ".join(choice_word_list)    
+    choices_word_list = [(random.choices(words, weights= probs)) for i in range(count)]
+    # print(choices_word_list)
+    sentence = " ".join( word for word_l in choices_word_list for word in word_l)
+    # print(sentence)    
     return sentence
 
 
