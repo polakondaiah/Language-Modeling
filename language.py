@@ -7,6 +7,7 @@ Roll No:
 from audioop import reverse
 import language_tests as test
 import pandas as pd
+import random
 
 project = "Language" # don't edit this
 
@@ -192,8 +193,10 @@ Parameters: int ; list of strs ; list of floats
 Returns: str
 '''
 from random import choices
-def generateTextFromUnigrams(count, words, probs):
-    return
+def generateTextFromUnigrams(count, words, probs):    
+    choice_word_list = [(random.choice(words)) for i in range(count)]
+    sentence = " ".join(choice_word_list)    
+    return sentence
 
 
 '''
@@ -201,6 +204,7 @@ generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs)
 #6 [Check6-2]
 Parameters: int ; list of strs ; list of floats ; dict mapping strs to (dicts mapping strs to (lists of values))
 Returns: str
+
 '''
 def generateTextFromBigrams(count, startWords, startWordProbs, bigramProbs):
     return
