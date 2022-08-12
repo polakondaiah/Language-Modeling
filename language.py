@@ -160,7 +160,6 @@ Returns: dict mapping strs to (dicts mapping strs to (lists of values))
 def buildBigramProbs(unigramCounts, bigramCounts):
     bigram_prob ={}
     for key,value in bigramCounts.items():
-        # print(value)
         words_l= []
         prob_l = []
         for key1,value1 in value.items():
@@ -265,6 +264,11 @@ Parameters: 2D list of strs ; str
 Returns: None
 '''
 def graphTopNextWords(corpus, word):
+    
+    word_brigram_words_list = buildBigramProbs(countUnigrams(corpus),countBigrams(corpus))[word]["words"]
+    word_brigram_probs_list = buildBigramProbs(countUnigrams(corpus),countBigrams(corpus))[word]["probs"]
+    top_next_bigrams = getTopWords(10,word_brigram_words_list,word_brigram_probs_list,ignore)
+    barPlot(top_next_bigrams,"Top 10 Bigram words")
     return
 
 
@@ -275,6 +279,7 @@ Parameters: 2D list of strs ; 2D list of strs ; int
 Returns: dict mapping strs to (lists of values)
 '''
 def setupChartData(corpus1, corpus2, topWordCount):
+    
     return
 
 
