@@ -487,10 +487,10 @@ def testSetupChartData():
 
 def runWeek3():
     book1 = loadBook("data/grimm_clean1.txt")
-    book2 = loadBook("data/andersen_clean.txt")
+    book2 = loadBook("data/andersen_clean1.txt")
     
-    graphTop50Words(book1)
-    graphTopStartWords(book1)
+    # graphTop50Words(book1)
+    # graphTopStartWords(book1)
     graphTopNextWords(book1, "said")
     graphTopNextWords(book2, "said")
     graphTopNextWords(book1, "good")
